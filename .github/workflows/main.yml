@@ -1,16 +1,15 @@
-name: Push to AWS CodeCommit
+name: Push to CodeCommit on Release
 
 on:
-  push:
-    tags:
-      - 'v*'  # This triggers the workflow on tag creation (e.g., v1.0.0)
+  release:
+    types: [published]
 
 jobs:
   push-to-codecommit:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Configure AWS credentials
@@ -20,10 +19,15 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
 
-    - name: Install Git
-      run: sudo apt-get install -y git
+    - name: Install AWS CLI
+      run: sudo apt-get install -y awscli
 
-    - name: Push to AWS CodeCommit
+    - name: Configure Git to use AWS CodeCommit credential helper
       run: |
-        git remote add codecommit https://git-codecommit.${{ secrets.AWS_REGION }}.amazonaws.com/v1/repos/demo
+        git config --global credential.helper '!aws codecommit credential-helper $@'
+        git config --global credential.UseHttpPath true
+
+    - name: Push to CodeCommit
+      run: |
+        git remote add codecommit https://git-codecommit.us-east-1.amazonaws.com/v1/repos/demo
         git push codecommit --all
