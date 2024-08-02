@@ -29,5 +29,7 @@ jobs:
 
     - name: Push to CodeCommit
       run: |
+        git add .
+        git commit -m "tag created"
         git remote add codecommit https://git-codecommit.${{ secrets.AWS_REGION }}.amazonaws.com/v1/repos/demo || true
         git push codecommit main:master
