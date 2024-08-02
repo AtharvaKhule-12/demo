@@ -16,7 +16,7 @@ jobs:
 
     - name: Create and push new tag
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PAT: ${{ secrets.PAT }}
       run: |
         TAG_NAME=$(date +'%Y.%m.%d.%H.%M')
         
@@ -24,7 +24,7 @@ jobs:
         git config user.email github-actions@github.com
         
         git tag $TAG_NAME
-        git push origin $TAG_NAME
+        git push https://$PAT@github.com/AtharvaKhule-12/demo.git $TAG_NAME
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
