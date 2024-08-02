@@ -2,8 +2,8 @@ name: Push to AWS CodeCommit on Release
 
 on:
   push:
-    tags:
-      - 'v*'  # Trigger on any tag starting with 'v'
+    branches:
+      - main  # Change this to your primary branch name if different
 
 jobs:
   push-to-codecommit:
