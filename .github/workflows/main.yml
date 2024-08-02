@@ -14,6 +14,19 @@ jobs:
       with:
         fetch-depth: 0  # Fetch all history for all tags and branches
 
+    - name: Create and push new tag
+      run: |
+        # Generate tag name
+        TAG_NAME=$(date +'%Y.%m.%d.%H.%M')
+        
+        # Configure Git
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        
+        # Create and push tag
+        git tag $TAG_NAME
+        git push origin $TAG_NAME
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
