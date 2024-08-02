@@ -15,6 +15,8 @@ jobs:
         fetch-depth: 0  # Fetch all history for all tags and branches
 
     - name: Create and push new tag
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         TAG_NAME=$(date +'%Y.%m.%d.%H.%M')
         
