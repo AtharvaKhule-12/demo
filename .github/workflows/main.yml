@@ -24,5 +24,5 @@ jobs:
     - name: Sync up to CodeCommit
       uses: tsgit18/sync-up-to-codecommit-action@v1
       with:
-        repository_name: test_repo
+        repository_name: demo
         aws_region: ${{ secrets.AWS_REGION }}
