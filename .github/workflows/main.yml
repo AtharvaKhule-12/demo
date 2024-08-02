@@ -29,5 +29,5 @@ jobs:
 
     - name: Push to CodeCommit
       run: |
-        git remote add codecommit https://git-codecommit.us-east-1.amazonaws.com/v1/repos/demo
+        git remote add codecommit https://git-codecommit.${{ secrets.AWS_REGION }}.amazonaws.com/v1/repos/demo
         git push codecommit --all
