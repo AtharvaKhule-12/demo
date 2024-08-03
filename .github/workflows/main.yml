@@ -24,7 +24,7 @@ jobs:
       with:
         tag_name: ${{ steps.date.outputs.date }}
         name: ${{ steps.date.outputs.date }}
-        token: ${{ secrets.PAT }}
+        token: ${{ secrets.PAT }} # Personal Access Token
         draft: false
         prerelease: false
 
