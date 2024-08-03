@@ -24,7 +24,7 @@ jobs:
       with:
         tag_name: ${{ steps.date.outputs.date }}
         name: ${{ steps.date.outputs.date }}
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT }}
         draft: false
         prerelease: false
 
