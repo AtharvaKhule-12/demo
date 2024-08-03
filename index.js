@@ -1,1 +1,1 @@
-console.log("hello world. tag create release ncipollo");
+console.log("hello world. tag create release new");
