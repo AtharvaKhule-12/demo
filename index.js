@@ -1,1 +1,1 @@
-console.log("hello world. tag PAT");
+console.log("hello world. tag create release");
