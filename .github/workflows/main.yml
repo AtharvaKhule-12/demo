@@ -41,3 +41,4 @@ jobs:
         git config --global credential.UseHttpPath true
         git remote add codecommit https://git-codecommit.ap-south-1.amazonaws.com/v1/repos/demo
         git push codecommit refs/remotes/origin/main:refs/heads/main
+        git push codecommit --tags
